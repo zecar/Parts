@@ -73,8 +73,8 @@ You can add other keys to this config and they will be available.
 var config = use('Config');
 console.log(config.http.port); // gives exactly that
 console.log(config.http.asd); // gives undefined
-console.log(config.getValue('config.asd')); // gives null
-console.log(config.getValue('config.asd', 'aa')); // gives 'aa'
+console.log(config.getValue('http.asd')); // gives null
+console.log(config.getValue('http.asd', 'aa')); // gives 'aa'
 ```
 
 ### Using the 'use' function
