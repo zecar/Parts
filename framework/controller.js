@@ -61,7 +61,11 @@ class Controller{
 	}
 	processController(rawController){
 		return new Promise((resolve, reject) => {
-			controllers[rawController.name] = rawController.methods || {};
+			var methodsKeys = Object.keys(rawController.methods || {});
+			controllers[rawController.name] = {};
+			for(var i = 0; i < methodsKeys.length; i++){
+				controllers[rawController.name][methodsKeys[i]] = rawController.methods[methodsKeys[i]].bind(controllers[rawController.name])
+			}
 			var data = rawController.data || {};
 			for(var key in data){
 				controllers[rawController.name][key] = data[key];
